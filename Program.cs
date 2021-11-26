@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace dotnetcore
 {
@@ -28,9 +29,40 @@ namespace dotnetcore
         static void Main(string[] args)
         {
             Console.WriteLine("Iniciando Programa");
+            
+            var xNotasZuqui = new List<int>() { 7, 6, 5, 3 }; //Lista
+            var xNotasBronza = new List<int>() { 8, 9, 10, 8 }; //Lista
+            var xMediaZ = CalcularMedia(xNotasZuqui);
+            var xMediaB = CalcularMedia(xNotasBronza);
 
-            var xNotasZuqui = new int[] { 7, 6, 5, 3 };
-            var xNotasBronza = new int[] { 8, 9, 10, 8 };
-        }
+            if (xMediaZ >= 7)
+            {
+                Console.WriteLine("Zuqui");
+                Console.WriteLine("Passou no ano letivo");
+            }else{
+                Console.WriteLine("Não passou no ano letivo");
+            }
+
+            if (xMediaB >= 7)
+            {
+                Console.WriteLine("Bronza");
+                Console.WriteLine("Passou no ano letivo");
+            }else{
+                Console.WriteLine("Não passou no ano letivo");
+            }      
+        }      
+         public static float CalcularMedia(List<int> pNotas)
+          {
+              var xSoma = 0.0f;
+              
+              foreach (var xNota in pNotas)
+              {
+                  xSoma = xSoma + xNota;             
+              }
+
+              var xMedia = xSoma/pNotas.Count; 
+              
+              return xMedia;
+          }
     }
 }
